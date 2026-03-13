@@ -9,7 +9,7 @@ const router = express.Router()
 //register new user endpoint, /auth/register
 router.post('/register', (req,res) => { 
     const {username, password} = req.body
-    
+    console.log('registratiom')
     //pass encryption
     const hashedPassword = bcrypt.hashSync(password, 8)
 

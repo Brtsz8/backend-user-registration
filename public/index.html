@@ -15,7 +15,7 @@
 <body>
     <section id="auth">
         <div>
-            <h2 className="sign-up-text">Login</h2>
+            <h2 class="sign-up-text">Login</h2>
             <p>Create an account!</p>
         </div>
 
@@ -182,15 +182,23 @@
         // guard clauses... if authenticating, return
         if (
             isLoading ||
-            isAuthenticating ||
+            //isAuthenticating ||
             !emailVal ||
             !passVal ||
             passVal.length < 6 ||
             !emailVal.includes('@')
-        ) { return }
+        ) { 
+        console.log("Blocked:", {
+        isLoading,
+        isAuthenticating,
+        emailVal,
+        passVal
+        })
+        return 
+        }
 
         // reset error and set isAuthenticating to true
-        error.style.display = 'none'
+        textError.style.display = 'none'
         isAuthenticating = true
         authBtn.innerText = 'Authenticating...'
 
@@ -232,8 +240,8 @@
 
         } catch (err) {
             console.log(err.message)
-            error.innerText = err.message
-            error.style.display = 'block'
+            textError.innerText = err.message
+            textError.style.display = 'block'
         } finally {
             authBtn.innerText = 'Submit'
             isAuthenticating = false
