@@ -19,3 +19,29 @@ Content-Type: application/json
     "username": "testmail@gmail.com",
     "password": "123456"
 }
+
+### fetxh all todos get / todos (protected)
+GET http://localhost:5000/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzczNzUzOTUwLCJleHAiOjE3NzM4NDAzNTB9.w8aA1BVh15JsmYh-c0laRbghK3bsIY_fVChHuRKaYxw
+
+### create new todo POST /TODOS (protected)
+POST http://localhost:5000/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzczNzUzOTUwLCJleHAiOjE3NzM4NDAzNTB9.w8aA1BVh15JsmYh-c0laRbghK3bsIY_fVChHuRKaYxw
+Content-Type: application/json
+
+{
+    "task": "Finish the task"
+}
+
+### update a todo
+PUT http://localhost:5000/todos/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzczNzUzOTUwLCJleHAiOjE3NzM4NDAzNTB9.w8aA1BVh15JsmYh-c0laRbghK3bsIY_fVChHuRKaYxw
+Content-Type: application/json
+
+{
+    "completed": 1
+}
+
+### delete a todo
+DELETE  http://localhost:5000/todos/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzczNzUzOTUwLCJleHAiOjE3NzM4NDAzNTB9.w8aA1BVh15JsmYh-c0laRbghK3bsIY_fVChHuRKaYxw
