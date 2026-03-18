@@ -1,7 +1,7 @@
 const express = require('express')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const db = require("../db.js")
+//const db = require("../db.js")
 const prisma = require('../prismaClient.js')
 
 const router = express.Router()
@@ -34,7 +34,7 @@ router.post('/register', async (req,res) => {
         // insertTodo.run(result.lastInsertRowid, firtsTodo)
         await prisma.todo.create({
             data: {
-                task: defaultTodo,
+                task: firtsTodo,
                 userId: user.id
             }
         })

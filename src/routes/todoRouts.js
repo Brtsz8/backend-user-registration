@@ -1,5 +1,5 @@
 const express = require('express')
-const db = require("../db.js")
+//const db = require("../db.js")
 const prisma = require('../prismaClient.js')
 
 const router = express.Router()
@@ -64,12 +64,19 @@ router.put('/:id', async (req,res) => {
 router.delete('/:id', async (req,res) => {
     const { id } = req.params
     const userId = req.userId
-    const deleteTodo = db.prepare(`
-        DELETE FROM todos
-        WHERE id = ?
-        AND user_id = ?`)    
+    // const deleteTodo = db.prepare(`
+    //     DELETE FROM todos
+    //     WHERE id = ?
+    //     AND user_id = ?`)    
 
-    deleteTodo.run(id, userId)
+    // deleteTodo.run(id, userId)
+
+    await prisma.todo.delete({
+        where: {
+            id: parseInt(id),
+            userId
+        }
+    })
 
     res.send({ message : "Todo deleted"})
 })
